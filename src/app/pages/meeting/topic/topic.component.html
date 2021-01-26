@@ -1,0 +1,9 @@
+<div class="box" fxLayout="row" [ngClass]="{'active': topic?.id == activeTopicId }">
+  <div class="topic-title" [ngClass]="{'faded': topic?.completed}">{{topic?.topic}}</div>
+  <div>
+    <span class="mr-3 counter" [ngClass]="{'faded': topic?.completed}">
+      <countdown #cd [config]="config"></countdown> m
+    </span>
+    <mdb-icon (click)="onCompleted()" [ngClass]="{'completed': topic?.completed}" fas icon="check"></mdb-icon>
+  </div>
+</div>

@@ -1,0 +1,147 @@
+<header class="h-100">
+  <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg  intro-fixed-nav navbar-dark teal darken-2"
+    [containerInside]="false">
+    <mdb-navbar-brand>
+      <a class="logo navbar-brand " href="#">
+        <strong>Meeting Management</strong>
+      </a>
+    </mdb-navbar-brand>
+    <links>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item  waves-light" mdbWavesEffect [routerLink]="'/home'">
+          <a class="nav-link" mdbTooltip="Home" placement="bottom">
+            <mdb-icon fas icon="home"></mdb-icon>
+          </a>
+        </li>
+        <li class="nav-item active waves-light" mdbWavesEffect [routerLink]="'/calendar'">
+          <a class="nav-link" mdbTooltip="Calendar" placement="bottom">
+            <mdb-icon fas icon="calendar-alt"></mdb-icon>
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/address'">
+          <a class="nav-link" mdbTooltip="Address Book" placement="bottom">
+            <mdb-icon fas icon="address-book"></mdb-icon>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/in-room-app'">
+          <a class="nav-link" mdbTooltip="In Room App" placement="bottom">
+            <mdb-icon fas icon="tablet-alt"></mdb-icon>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/secretary-dashboard'">
+          <a class="nav-link" mdbTooltip="dashboard" placement="bottom">
+            <mdb-icon fas icon="chart-pie"></mdb-icon>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/minutes-meeting'">
+          <a class="nav-link" mdbTooltip="Minutes Meeting" placement="bottom">
+            <mdb-icon fas icon="calendar-check"></mdb-icon>
+          </a>
+        </li>
+        <!-- Dropdown -->
+        <!-- <li class="nav-item dropdown" dropdown>
+          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+            <mdb-icon fas icon="tablet-alt"></mdb-icon><span class="caret"></span>
+            <span class="sr-only">(current)</span>
+          </a>
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="'/in-room-app'">
+              <mdb-icon fas icon="sign-in-alt"></mdb-icon> In Room Tablet
+            </a>
+            <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="'/on-door-app'">
+              <mdb-icon fas icon="door-closed"></mdb-icon> On Door Tablet
+            </a>
+          </div>
+        </li> -->
+      </ul>
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <!-- Dropdown -->
+        <li class="nav-item dropdown" dropdown>
+
+          <a dropdownToggle class="nav-link p-0" href="#">
+            <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" class="rounded-circle z-depth-0"
+              alt="avatar image" height="35" mdbWavesEffect>
+          </a>
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-default" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Account</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Access Backend</a>
+            <div class="divider dropdown-divider"></div>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </links>
+  </mdb-navbar>
+</header>
+<!--Main Navigation-->
+
+<!--Main Layout-->
+<main class="container" style="margin-top: 80px;">
+  <div class="row" style="margin: 10px">
+    <div class="col-sm-12 main_summary">
+      <h2>Minutes Meeting</h2>
+      <div style="float: right;">
+        <button _ngcontent-dmu-c9="" class="btn btn-default pull-right m-0" mdbwaveseffect=""><span _ngcontent-dmu-c9="" style="color: white;">
+            <i class="fa-download fas"></i>
+            Download Document
+          </span></button>
+      </div>
+
+      <div class="row text-center ">
+        <table>
+          <tbody>
+            <tr>
+              <td>Title</td>
+              <td class="super">{{event.title}}</td>
+            </tr>
+            <tr>
+              <td>Date</td>
+              <td class="super">{{event.start |date : 'medium'}}</td>
+            </tr>
+
+            <tr>
+              <td>End Date</td>
+              <td class="super">{{event.end |date : 'medium'}}</td>
+            </tr>
+
+            <tr>
+              <td>Written by</td>
+              <td class="super">Mazen Farah</td>
+            </tr>
+
+            <tr>
+              <td>Attendees</td>
+              <td class="super">
+                <div *ngFor="let item of event?.meta?.users">
+                  {{item.name}}
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Topics</td>
+              <td class="super">
+                <div *ngFor="let item of event.topics">
+                  {{item.topic}}
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Notes</td>
+              <td class="super">
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+<br>
+<br>
+<br>
+<!--Main Layout-->
+<!-- add to document <head> -->

@@ -1,0 +1,129 @@
+@import '../../../assets/css/devices.min.css';
+
+body,
+html {
+  height: 100%;
+}
+
+.bg {
+  /* The image used */
+  background-image: url('~/assets//img/in_room.jpg');
+  /* Half height */
+  height: 100vh;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.custom-button {
+  z-index: 9999;
+  max-height: 35%;
+  min-height: 25%;
+  width: 50%;
+  height: 240px;
+}
+
+.screen {
+  background-color: #f5f5f5 !important;
+}
+
+.timer {
+  border: 1px solid #ddd;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 1px 1px #f1efef;
+  position: relative;
+  padding: 3px 36px;
+  margin: 6px;
+  font-weight: 700;
+  color: #777;
+  font-size: 18px;
+}
+
+.box {
+  padding: 10px;
+  background: #fff;
+  margin: 3px 0;
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  place-content: center space-between;
+  align-items: center;
+  box-shadow: 0 1px 1px #c1c1c1;
+}
+
+.pan {
+  padding: 15px;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 1px 1px #c1c1c1;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pan-header {
+  margin: 0 0 10px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+textarea {
+  border: 1px solid #d5d5d5;
+}
+
+.btns {
+  margin-top: 10px;
+}
+
+.e-btn {
+  border: 1px solid rgba(0, 0, 0, .12);
+  padding: 5px 15px;
+  color: #646464;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.owner-label {
+  min-width: 45px;
+  font-size: 13px;
+  margin-top: 10px;
+  font-weight: 400;
+
+}
+
+.owner-name {
+  color: #aa9850;
+  text-decoration: underline;
+  font-size: 13px;
+  margin-top: 10px;
+  font-weight: 400;
+}
+
+.user-img {
+  height: 45px;
+}
+
+.user {
+  position: relative;
+}
+
+.user:after {
+  content: ' ';
+  width: 12px;
+  height: 12px;
+  background: #09c951;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-radius: 10px;
+}
+
+.offline:after {
+  background: #e68933;
+
+}

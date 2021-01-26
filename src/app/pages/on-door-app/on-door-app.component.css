@@ -1,0 +1,46 @@
+@import '../../../assets/css/devices.min.css';
+body, html {
+    height: 100%;
+}
+
+.bg {
+    /* The image used */
+    background-image: url('~/assets/img/on_door_application.png');
+    /* Half height */
+    height: 100vh;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.custom-button {
+    z-index: 9999;
+    max-height: 35%;
+    min-height: 25%;
+    width: 50%;
+    height: 240px;
+}
+
+.right-app-side{
+    background-color: rgba(29, 29, 29, 0.678);
+}
+.right-app-side::after {
+    content: "";
+    background-image: url('https://www.lottehotel.com/content/dam/lotte-hotel/city/jeju/facilities/business/5350-151125-2000-fac-ltcj.jpg.thumb.768.768.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.8;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+  }
+
+  hr{
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+  }
+

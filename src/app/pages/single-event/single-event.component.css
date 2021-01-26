@@ -1,0 +1,175 @@
+* {
+  font-size: 15px;
+}
+
+.rounded-button {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  padding: 17px;
+  color: white;
+}
+
+.card-body {
+  -webkit-box-flex: 1;
+  flex: 1 1 auto;
+  padding: 1.25rem;
+}
+
+.displayinline {
+  display: inline-flex;
+}
+
+.comment-widgets .comment-row {
+  border-bottom: 1px solid transparent;
+  padding: 14px;
+  display: -webkit-box;
+  display: flex;
+  margin: 10px 0;
+}
+
+.fa-pencil-alt:before {
+  color: #777777;
+}
+
+.fa-heart:before {
+  color: #777777;
+}
+
+.flex-row {
+  -webkit-box-orient: horizontal !important;
+  -webkit-box-direction: normal !important;
+  flex-direction: row !important;
+}
+
+.d-flex {
+  display: -webkit-box !important;
+  display: flex !important;
+}
+
+.label-primary {
+  background-color: #7460ee;
+}
+
+.label-rounded {
+  border-radius: 60px !important;
+}
+
+.label {
+  padding: 3px 10px;
+  line-height: 13px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 400;
+  border-radius: 2px;
+  font-size: 75%;
+}
+
+.label-success {
+  background-color: #36bea6;
+}
+
+.label-danger {
+  background-color: #f62d51;
+}
+
+.font-medium {
+  font-weight: 600;
+}
+
+.m-b-15 {
+  margin-bottom: 15px;
+}
+
+.d-block {
+  display: block !important;
+}
+
+.rounded-circle {
+  border-radius: 50% !important;
+}
+
+img {
+  vertical-align: middle;
+  border-style: none;
+}
+
+.comment-text {
+  padding-left: 15px;
+  width: 100%;
+}
+
+.w-100 {
+  width: 100% !important;
+}
+
+:host /deep/table tr td,
+table tr th {
+  font-weight: 400;
+}
+
+table thead th {
+  font-size: .875em;
+  margin: 0;
+  padding: .5em 1em;
+  font-weight: 700;
+}
+
+.icon-file {
+  font-size: 24px;
+  color: #645a5a;
+}
+
+.file-td {
+  max-width: 85px;
+  min-width: 50px;
+  text-align: center;
+}
+
+table {
+  margin-bottom: 5px;
+}
+
+table.table th,
+table.table td {
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+}
+
+.rating-td {
+  /* padding: 0 !important; */
+}
+
+.rating-td>div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2px;
+}
+h4{
+  font-size: 20px !important;
+}
+
+.vote-up {
+  font-weight: 400;
+  color: #4cc17e;
+  font-size: 16px;
+}
+
+.vote-down {
+  font-weight: 400;
+  color: #c37878;
+  font-size: 16px;
+}
+
+.vote-up *,
+.vote-down * {
+  font-size: 14px!important;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 1000px;
+    margin: 1.75rem auto;
+  }
+}

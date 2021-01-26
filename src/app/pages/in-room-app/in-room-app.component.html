@@ -1,0 +1,271 @@
+<header class="h-100">
+  <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark intro-fixed-nav teal darken-2"
+    [containerInside]="false">
+    <mdb-navbar-brand>
+      <a class="logo navbar-brand" href="#">
+        <strong>Meeting Management</strong>
+      </a>
+    </mdb-navbar-brand>
+    <links>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/home'">
+          <a class="nav-link" mdbTooltip="Home" placement="bottom">
+            <mdb-icon fas icon="home"></mdb-icon>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/calendar'">
+          <a class="nav-link" mdbTooltip="Calendar" placement="bottom">
+            <mdb-icon fas icon="calendar-alt"></mdb-icon>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/address'">
+          <a class="nav-link" mdbTooltip="Address Book" placement="bottom">
+            <mdb-icon fas icon="address-book"></mdb-icon>
+          </a>
+        </li>
+        <li class="nav-item active waves-light" mdbWavesEffect [routerLink]="'/in-room-app'">
+          <a class="nav-link" mdbTooltip="In Room App" placement="bottom">
+            <mdb-icon fas icon="tablet-alt"></mdb-icon>
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/secretary-dashboard'">
+          <a class="nav-link" mdbTooltip="dashboard" placement="bottom">
+            <mdb-icon fas icon="chart-pie"></mdb-icon>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/minutes-meeting'">
+          <a class="nav-link" mdbTooltip="Minutes Meeting" placement="bottom">
+            <mdb-icon fas icon="calendar-check"></mdb-icon>
+          </a>
+        </li>
+        <!-- Dropdown -->
+        <!-- <li class="nav-item dropdown active" dropdown>
+          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+            <mdb-icon fas icon="tablet-alt"></mdb-icon><span class="caret"></span>
+            <span class="sr-only">(current)</span>
+          </a>
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="'/in-room-app'">
+              <mdb-icon fas icon="sign-in-alt"></mdb-icon> In Room Tablet
+            </a>
+            <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="'/on-door-app'">
+              <mdb-icon fas icon="door-closed"></mdb-icon> On Door Tablet
+            </a>
+          </div>
+        </li> -->
+      </ul>
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <!-- Dropdown -->
+        <li class="nav-item dropdown" dropdown>
+
+          <a dropdownToggle class="nav-link p-0" href="#">
+            <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" class="rounded-circle z-depth-0"
+              alt="avatar image" height="35" mdbWavesEffect>
+          </a>
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Account</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Access Backend</a>
+            <div class="divider dropdown-divider"></div>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </links>
+  </mdb-navbar>
+</header>
+<!--Main Navigation-->
+<!-- <link rel="stylesheet" type="text/css" href="../../../../node_modules/html5-device-mockups/dist/device-mockups.min.css"> -->
+
+<div class="container" class="bg">
+  <div class="row" style="margin-right: 0px; margin-left: 0px;">
+    <div class="col-sm-12">
+      <div class="marvel-device ipad silver landscape"
+        [ngStyle]="innerWidth<1400 ?{'height': '506px', 'left':'16%', 'top':'12%'} : {'height': '506px', 'left':'18%', 'top':'25%'}">
+        <div class="camera"></div>
+        <div class="screen">
+          <!-- Content goes here -->
+          <div class="d-flex align-content-lg-stretch flex-wrap">
+            <!-- <img src="assets/img/door_room.jpg" style="max-width: 100%;" alt=""> -->
+            <div *ngIf="showHome" class="animated zoomIn w-100">
+              <div class="d-flex justify-content-around big-box ">
+                <button (click)="goSupport()" type="button" mdbBtn color="elegant" mdbWavesEffect
+                  class="custom-button align-self-center">
+                  <mdb-icon fas icon="tools" size="5x"></mdb-icon>
+                  <h5>Support</h5>
+                </button>
+                <button (click)="goServices()" type="button" mdbBtn color="elegant" mdbWavesEffect
+                  class="custom-button align-self-center">
+                  <mdb-icon fas icon="concierge-bell" size="5x"></mdb-icon>
+                  <h5>Services</h5>
+                </button>
+                <button (click)="goCleaning()" type="button" mdbBtn color="elegant" mdbWavesEffect
+                  class="custom-button">
+                  <mdb-icon fas icon="broom" size="5x"></mdb-icon>
+                  <h5>Cleaning</h5>
+                </button>
+              </div>
+              <div class="d-flex justify-content-around">
+                <button (click)="goBeverage()" type="button" mdbBtn color="elegant" mdbWavesEffect
+                  class="custom-button">
+                  <mdb-icon fas icon="coffee" size="5x"></mdb-icon>
+                  <h5>Beverage</h5>
+                </button>
+                <button (click)="goMessage()" type="button" mdbBtn color="elegant" mdbWavesEffect class="custom-button">
+                  <mdb-icon fas icon="comment-alt" size="5x"></mdb-icon>
+                  <h5>Message Host</h5>
+                </button>
+                <button (click)="goEmergency()" type="button" mdbBtn color="elegant" mdbWavesEffect
+                  class="custom-button">
+                  <mdb-icon fas icon="exclamation-circle" size="5x"></mdb-icon>
+                  <h5>Emergency</h5>
+                </button>
+              </div>
+            </div>
+            <div *ngIf="showSupport" class="animated zoomIn w-100">
+              <div class="d-flex justify-content-around big-box ">
+                <button (click)="missingCables()" type="button" mdbBtn color="elegant" mdbWavesEffect
+                  class="custom-button">
+                  <mdb-icon fas icon="ethernet" size="5x"></mdb-icon>
+                  <h5>Missing Cables</h5>
+                </button>
+                <button (click)="connectionProblems()" type="button" mdbBtn color="elegant" mdbWavesEffect
+                  class="custom-button">
+                  <mdb-icon fas icon="wifi" size="5x"></mdb-icon>
+                  <h5>Connection Problems</h5>
+                </button>
+                <button (click)="talkToAnExpert()" type="button" mdbBtn color="elegant" mdbWavesEffect
+                  class="custom-button">
+                  <mdb-icon fas icon="user-shield" size="5x"></mdb-icon>
+                  <h5>Talk to an expert</h5>
+                </button>
+              </div>
+              <div class="d-flex justify-content-around">
+                <button (click)="missingHardware()" type="button" mdbBtn color="elegant" mdbWavesEffect
+                  class="custom-button">
+                  <mdb-icon fas icon="microphone-slash" size="5x"></mdb-icon>
+                  <h5>Missing Hardware</h5>
+                </button>
+                <button (click)="printingProblems()" type="button" mdbBtn color="elegant" mdbWavesEffect
+                  class="custom-button">
+                  <mdb-icon fas icon="print" size="5x"></mdb-icon>
+                  <h5>Printing Problems</h5>
+                </button>
+                <button (click)="shareYourErrorMessage()" type="button" mdbBtn color="elegant" mdbWavesEffect
+                  class="custom-button">
+                  <mdb-icon fas icon="comment-alt" size="5x"></mdb-icon>
+                  <h5>Share your error message?</h5>
+                </button>
+              </div>
+            </div>
+            <!-- <div *ngIf="showServices" class="animated zoomIn w-100">
+              <div class="d-flex justify-content-around big-box ">
+                <button (click)="goSupport()" type="button" mdbBtn color="elegant" mdbWavesEffect class="custom-button">
+                  <mdb-icon fas icon="tools" size="5x"></mdb-icon>
+                  <h5>Support</h5>
+                </button>
+                <button (click)="goServices()" type="button" mdbBtn color="elegant" mdbWavesEffect
+                  class="custom-button">
+                  <mdb-icon fas icon="concierge-bell" size="5x"></mdb-icon>
+                  <h5>Services</h5>
+                </button>
+                <button (click)="goCleaning()" type="button" mdbBtn color="elegant" mdbWavesEffect
+                  class="custom-button">
+                  <mdb-icon fas icon="broom" size="5x"></mdb-icon>
+                  <h5>Cleaning</h5>
+                </button>
+              </div>
+              <div class="d-flex justify-content-around">
+                <button (click)="goBeverage()" type="button" mdbBtn color="elegant" mdbWavesEffect
+                  class="custom-button">
+                  <mdb-icon fas icon="coffee" size="5x"></mdb-icon>
+                  <h5>Beverage</h5>
+                </button>
+                <button (click)="goMessage()" type="button" mdbBtn color="elegant" mdbWavesEffect class="custom-button">
+                  <mdb-icon fas icon="comment-alt" size="5x"></mdb-icon>
+                  <h5>Message Host</h5>
+                </button>
+                <button (click)="goEmergency()" type="button" mdbBtn color="elegant" mdbWavesEffect
+                  class="custom-button">
+                  <mdb-icon fas icon="exclamation-circle" size="5x"></mdb-icon>
+                  <h5>Emergency</h5>
+                </button>
+              </div>
+            </div> -->
+            <!-- <div *ngIf="showCleaning" class="animated zoomIn w-100">
+              <h3 style="color: white">How many workers do you need?</h3>
+              <div class="d-flex justify-content-around big-box ">
+                <button (click)="goSupport()" type="button" mdbBtn color="elegant" mdbWavesEffect class="custom-button">
+                  <mdb-icon fas icon="tools" size="5x"></mdb-icon>
+                  <h5>Support</h5>
+                </button>
+                <button (click)="goServices()" type="button" mdbBtn color="elegant" mdbWavesEffect
+                  class="custom-button">
+                  <mdb-icon fas icon="concierge-bell" size="5x"></mdb-icon>
+                  <h5>Services</h5>
+                </button>
+                <button (click)="goCleaning()" type="button" mdbBtn color="elegant" mdbWavesEffect
+                  class="custom-button">
+                  <mdb-icon fas icon="broom" size="5x"></mdb-icon>
+                  <h5>Cleaning</h5>
+                </button>
+              </div>
+              <div class="d-flex justify-content-around">
+                <button (click)="goBeverage()" type="button" mdbBtn color="elegant" mdbWavesEffect
+                  class="custom-button">
+                  <mdb-icon fas icon="coffee" size="5x"></mdb-icon>
+                  <h5>Beverage</h5>
+                </button>
+                <button (click)="goMessage()" type="button" mdbBtn color="elegant" mdbWavesEffect class="custom-button">
+                  <mdb-icon fas icon="comment-alt" size="5x"></mdb-icon>
+                  <h5>Message Host</h5>
+                </button>
+                <button (click)="goEmergency()" type="button" mdbBtn color="elegant" mdbWavesEffect
+                  class="custom-button">
+                  <mdb-icon fas icon="exclamation-circle" size="5x"></mdb-icon>
+                  <h5>Emergency</h5>
+                </button>
+              </div>
+            </div> -->
+            <!-- <div *ngIf="showBeverage" class="animated zoomIn w-100">
+              BEVERAGE
+              <div class="d-flex justify-content-around big-box ">
+                <button (click)="goSupport()" type="button" mdbBtn color="elegant" mdbWavesEffect class="custom-button">
+                  <mdb-icon fas icon="tools" size="5x"></mdb-icon>
+                  <h5>Support</h5>
+                </button>
+                <button (click)="goServices()" type="button" mdbBtn color="elegant" mdbWavesEffect
+                  class="custom-button">
+                  <mdb-icon fas icon="concierge-bell" size="5x"></mdb-icon>
+                  <h5>Services</h5>
+                </button>
+                <button (click)="goCleaning()" type="button" mdbBtn color="elegant" mdbWavesEffect
+                  class="custom-button">
+                  <mdb-icon fas icon="broom" size="5x"></mdb-icon>
+                  <h5>Cleaning</h5>
+                </button>
+              </div>
+              <div class="d-flex justify-content-around">
+                <button (click)="goBeverage()" type="button" mdbBtn color="elegant" mdbWavesEffect
+                  class="custom-button">
+                  <mdb-icon fas icon="coffee" size="5x"></mdb-icon>
+                  <h5>Beverage</h5>
+                </button>
+                <button (click)="goMessage()" type="button" mdbBtn color="elegant" mdbWavesEffect class="custom-button">
+                  <mdb-icon fas icon="comment-alt" size="5x"></mdb-icon>
+                  <h5>Message Host</h5>
+                </button>
+                <button (click)="goEmergency()" type="button" mdbBtn color="elegant" mdbWavesEffect
+                  class="custom-button">
+                  <mdb-icon fas icon="exclamation-circle" size="5x"></mdb-icon>
+                  <h5>Emergency</h5>
+                </button>
+              </div>
+            </div> -->
+          </div>
+        </div>
+        <div class="home" (click)="goHome()" style="cursor: pointer"></div>
+      </div>
+    </div>
+  </div>
+</div>

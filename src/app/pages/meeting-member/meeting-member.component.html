@@ -1,0 +1,130 @@
+<header class="h-100">
+  <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark intro-fixed-nav teal darken-2"
+    [containerInside]="false">
+    <mdb-navbar-brand>
+      <a class="logo navbar-brand" href="#">
+        <strong>Meeting Management</strong>
+      </a>
+    </mdb-navbar-brand>
+    <links>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active waves-light" mdbWavesEffect [routerLink]="'/dashboard-member'">
+          <a class="nav-link" mdbTooltip="Home" placement="bottom">
+            <mdb-icon fas icon="home"></mdb-icon>
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <!-- <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/meeting-member/31'">
+          <a class="nav-link" mdbTooltip="Calendar" placement="bottom">
+            <mdb-icon fas icon="users"></mdb-icon>
+          </a>
+        </li> -->
+        <!-- Dropdown -->
+        <!-- <li class="nav-item dropdown active" dropdown>
+          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+            <mdb-icon fas icon="tablet-alt"></mdb-icon><span class="caret"></span>
+            <span class="sr-only">(current)</span>
+          </a>
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="'/in-room-app'">
+              <mdb-icon fas icon="sign-in-alt"></mdb-icon> In Room Tablet
+            </a>
+            <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="'/on-door-app'">
+              <mdb-icon fas icon="door-closed"></mdb-icon> On Door Tablet
+            </a>
+          </div>
+        </li> -->
+      </ul>
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <!-- Dropdown -->
+        <li class="nav-item dropdown" dropdown>
+
+          <a dropdownToggle class="nav-link p-0" href="#">
+            <img src="http://emilcarlsson.se/assets/mikeross.png" class="rounded-circle z-depth-0"
+              alt="avatar image" height="35" mdbWavesEffect>
+          </a>
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Account</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Access Backend</a>
+            <div class="divider dropdown-divider"></div>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </links>
+  </mdb-navbar>
+</header>
+<!--Main Navigation-->
+<!-- <link rel="stylesheet" type="text/css" href="../../../../node_modules/html5-device-mockups/dist/device-mockups.min.css"> -->
+
+<div class="container" class="bg">
+  <div class="row" style="margin-right: 0px; margin-left: 0px;">
+    <div class="col-sm-12">
+      <div class="marvel-device ipad silver landscape"
+        [ngStyle]="innerWidth<1400 ?{'height': '506px', 'left':'16%', 'top':'12%'} : {'height': '650px','width':'950px', 'left':'18%', 'top':'25%'}">
+        <div class="camera"></div>
+        <div class="screen">
+
+          <!-- Content goes here -->
+
+          <!-- LANDING -->
+          <div fxLayout="row" fxLayoutAlign="center center" style="height: 100%;" *ngIf="homepage">
+            <div class="spinner-grow text-success" role="status" [hidden]="!loading">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <button type="button" class="btn btn-secondary" (click)="startMeeting()" [hidden]="loading">Start Meeting</button>
+          </div>
+          <!-- / LANDING -->
+
+
+          <!-- THANK YOU -->
+          <div fxLayout="row" fxLayoutAlign="center center" style="height: 100%;" *ngIf="thankYou">
+            <h2 style="color: #00796b;  font-weight: 300;">Thank You!</h2>
+          </div>
+          <!-- / THANK YOU -->
+
+          <div fxLayout="column" fxLayoutAlign="start start" style="height: 100%;overflow: auto;" *ngIf="agenda">
+            <div fxLayout="row" fxLayoutAlign="center center" style="width: 100%;margin-top: 2%;">
+              <!-- <button (click)="endMeeting()" type="button" class="btn btn-secondary btn-sm">End Meeting</button> -->
+              <a dropdownToggle class="nav-link user p-0 mr-4" href="javascript:void(0);" style="position: absolute;  right: 10px;">
+                <img src="http://emilcarlsson.se/assets/mikeross.png" class="user-img rounded-circle z-depth-0"
+                  alt="avatar image" style="height: 40px;" mdbWavesEffect>
+              </a>
+              <div class="timer">
+                <mdb-icon fas icon="stopwatch mr-1"></mdb-icon>
+                {{elapsed}} m
+              </div>
+            </div>
+
+            <div class="pl-3 pr-3 pt-3 pb-2" style="width: 100%;" fxLayout="row" fxLayoutAlign="center start">
+              <a *ngFor="let user of event?.meta?.users; index as i" [ngClass]="{'offline': i==1 || i==3}" dropdownToggle class="nav-link user p-0 mr-4" href="javascript:void(0);">
+                <img [src]="user.image" class="user-img rounded-circle z-depth-0"
+                  alt="avatar image" height="35" mdbWavesEffect>
+              </a>
+            </div>
+
+            <div fxLayout="row" fxLayoutGap="15px" style="width: 100%;" class="p-3">
+
+              <div style="width: 100%;" fxFlex="calc(60% - 15px)">
+                <ng-container *ngFor="let topic of event?.topics">
+                  <app-topic-member [topic]="topic" [activeTopicId]="event.activeTopicId"></app-topic-member>
+                </ng-container>
+              </div>
+
+              <div class="pan" fxFlex="calc(40% - 15px)">
+                <app-pan-member [topic]="activeTopic" [event]="event"></app-pan-member>
+              </div>
+            </div>
+
+            <div fxLayout="row" fxLayoutGap="15px" style="width: 100%;" class="p-3">
+              <app-chat-box-member [users]="event.meta.users" style="width: 100%;"></app-chat-box-member>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="home" (click)="goHome()" style="cursor: pointer"></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,319 @@
+<header class="h-100">
+  <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg  intro-fixed-nav navbar-dark teal darken-2"
+    [containerInside]="false">
+    <mdb-navbar-brand>
+      <a class="logo navbar-brand " href="#">
+        <strong>Meeting Management</strong>
+      </a>
+    </mdb-navbar-brand>
+    <links>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active waves-light" mdbWavesEffect [routerLink]="'/dashboard-member'">
+          <a class="nav-link" mdbTooltip="Home" placement="bottom">
+            <mdb-icon fas icon="home"></mdb-icon>
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <!-- <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/invitation/Expo'">
+          <a class="nav-link" mdbTooltip="Meeting" placement="bottom">
+            <mdb-icon fas icon="users"></mdb-icon>
+          </a>
+        </li> -->
+        <!-- Dropdown -->
+        <!-- <li class="nav-item dropdown" dropdown>
+          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+            <mdb-icon fas icon="tablet-alt"></mdb-icon><span class="caret"></span>
+          </a>
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-default" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">
+              <mdb-icon fas icon="sign-in-alt"></mdb-icon> In Room Tablet
+            </a>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">
+              <mdb-icon fas icon="door-closed"></mdb-icon> On Door Tablet
+            </a>
+          </div>
+        </li> -->
+      </ul>
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <!-- Dropdown -->
+        <li class="nav-item dropdown" dropdown>
+
+          <a dropdownToggle class="nav-link p-0" href="#">
+            <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" class="rounded-circle z-depth-0"
+              alt="avatar image" height="35" mdbWavesEffect>
+          </a>
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-default" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Account</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Access Backend</a>
+            <div class="divider dropdown-divider"></div>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </links>
+  </mdb-navbar>
+  <!-- Main -->
+  <div class="view intro-2"
+    style='height: 26vh; margin-top: 7.5vh;'
+    [ngStyle]="{ 'background-image': 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.7) 100%), url(' + backgroundimage + ')'}">
+    <div class="full-bg-img">
+      <div class="mask rgba-stylish-strong flex-center">
+        <!-- <div class="container text-center white-text wow fadeInUp">
+            <h2>Welcome to Meeting Managements</h2>
+            <br>
+            <h5>Here will be the main screen</h5>
+          </div> -->
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="d-flex justify-content-between" *ngIf="myEvent">
+                <div>
+                  <span style="color: white;font-size: 25px !important;" class="h1 text-uppercase"><strong style="font-size: 25px !important;">Event: </strong>{{myEvent.title}}</span>
+                  <br />
+                  <span style="cursor: pointer" [routerLink]="'/on-door-app/'+myEvent.meta.roomNumber.number" *ngIf="myEvent.meta" style="color: seashell" class="h4" style="color: white;font-size: 25px !important;">{{myEvent.meta.roomNumber.name}}</span>
+                </div>
+                <div *ngIf="(myEvent.start | amIsAfter:now:'minute') || (myEvent.start | amIsBefore:myEvent.end:'minute')"
+                  class="d-flex flex-row-reverse">
+                  <button type="button" class="btn btn-warning btn-rounded" style="border-radius: 30px;" (click)="open(content)">Propose a new date</button>
+                  <button type="button" class="btn btn-danger btn-rounded" style="border-radius: 30px;"  (click)="rejectbtn()">Reject</button>
+                  <button type="button" class="btn btn-success btn-rounded" style="border-radius: 30px;" (click)="acceptbtn()">Accept</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.Main -->
+</header>
+<!--Main Navigation-->
+
+<!--Main Layout-->
+<main class="container">
+  <div class="row" style="margin: 10px">
+    <div class="col-sm-12">
+      <br />
+      <h4 style="font-weight: 400;">Date & Time</h4>
+    </div>
+    <div class="col-sm-4">
+      <mdb-card>
+        <mdb-card-body *ngIf="myEvent">
+          <mdb-card-title>
+            <h4 *ngIf="myEvent.start | amIsAfter">Starts</h4>
+            <h4 *ngIf="myEvent.start | amIsBefore">Started</h4>
+          </mdb-card-title>
+          <mdb-card-text>
+            <strong>{{myEvent.start | amTimeAgo}}</strong>
+            on <strong>{{myEvent.start | amLocal | amDateFormat: 'YYYY-MM-DD'}}</strong>
+            at <strong>{{myEvent.start | amLocal | amDateFormat: 'h:mm A'}}</strong>
+          </mdb-card-text>
+          <div class="flex-row">
+            <!-- <a class="card-link">Update</a> -->
+            <!-- <a class="card-link">Another link</a> -->
+          </div>
+        </mdb-card-body>
+      </mdb-card>
+    </div>
+    <div class="col-sm-4">
+      <mdb-card>
+        <mdb-card-body *ngIf="myEvent && myEvent.end">
+          <mdb-card-title>
+            <h4 *ngIf="myEvent.end | amIsAfter">Ends</h4>
+            <h4 *ngIf="myEvent.end | amIsBefore">Ended</h4>
+          </mdb-card-title>
+          <mdb-card-text>
+            <strong>{{myEvent.end | amTimeAgo}}</strong>
+            on <strong>{{myEvent.end | amLocal | amDateFormat: 'YYYY-MM-DD'}}</strong>
+            at <strong>{{myEvent.end | amLocal | amDateFormat: 'h:mm A'}}</strong>
+          </mdb-card-text>
+          <div class="flex-row">
+            <!-- <a class="card-link">Update</a> -->
+            <!-- <a class="card-link">Another link</a> -->
+          </div>
+        </mdb-card-body>
+      </mdb-card>
+    </div>
+    <div class="col-sm-4" style="margin-bottom: 35px;" *ngIf="myEvent">
+      <mdb-card>
+        <mdb-card-body>
+          <mdb-card-title>
+            <h4>Duration</h4>
+          </mdb-card-title>
+          <mdb-card-text>
+            About<strong>
+              {{(myEvent.end | amDifference: myEvent.start :'seconds' : true) | amDuration:'seconds'}}</strong>
+          </mdb-card-text>
+          <div class="flex-row">
+            <!-- <a class="card-link">Update</a> -->
+            <!-- <a class="card-link">Another link</a> -->
+          </div>
+        </mdb-card-body>
+      </mdb-card>
+    </div>
+    <!-- <div class="col-sm-12">
+      <h3>Users</h3>
+    </div> -->
+  </div>
+  <div class="row" style="margin: 10px;">
+    <div class="col-sm-5">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Users</h4>
+        </div>
+        <div class="comment-widgets scrollable" *ngIf="users">
+          <!-- Comment Row -->
+          <div class="d-flex flex-row comment-row m-t-0" *ngFor="let user of users">
+            <div class="p-2"><img [src]="user.image" alt="user" width="50" class="rounded-circle"></div>
+            <div class="comment-text w-100">
+              <h6 class="font-medium">{{user.name}}</h6>
+              <span class="m-b-15 d-block">{{user.username}}<br>{{user.email_address}} </span>
+              <!-- <div class="comment-footer">
+                <span class="label label-rounded label-primary  mr-2"
+                  [ngStyle]="{'background-color':user.process === 'Accepted' ? 'green' : user.process === 'Pending' ? 'purple':'#921A24' }">
+                  {{user.process}}
+                </span>
+                <span class="label label-rounded label-danger" (click)="onToggleChat()">Chat</span>
+
+
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-7">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Agenda</h4>
+        </div>
+        <div class="p-2">
+          <table class="table table-bordered">
+            <thead>
+              <th>Topic</th>
+              <th>Duration</th>
+              <th>Owner</th>
+              <th class="file-td">
+                <mdb-icon class="icon-file" style="cursor: pointer;font-size: 15px;" fas icon="paperclip"></mdb-icon>
+              </th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of topics;  index as i">
+                <td class="text-capitalize">{{item.topic}}</td>
+                <td>{{item.duration}}</td>
+                <td>{{item.user[0].name}}</td>
+                <!-- <td class="rating-td">
+                  <div>
+                    <bar-rating [(rate)]="rate" [readOnly]="true" [max]="5"></bar-rating>
+                  </div>
+                </td> -->
+                <td class="file-td">
+                  <mdb-icon class="icon-file" style="cursor: pointer;" fas icon="file-alt"></mdb-icon>
+                </td>
+              </tr>
+              <tr [hidden]="topics.length">
+                <td colspan="5">No agenda found</td>
+              </tr>
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+
+      <div class="card mt-4" *ngIf="room">
+        <div class="card-body">
+          <h4 class="card-title">{{room.name}} Specifications</h4>
+        </div>
+        <div class="" style="padding:11px" fxLayout="row" fxLayoutAlign="space-around center">
+          <div class="col-sm-2 text-center" *ngIf="room.amenities">
+            <mdb-icon [class]="room.amenities.includes('tv')? ['green-text']:null" fas icon="tv" size="3x" class="pr-3"
+              aria-hidden="true"></mdb-icon>
+            <br>
+            <span>TV</span>
+          </div>
+          <div class="col-sm-2 text-center" *ngIf="room.amenities">
+            <mdb-icon [class]="room.amenities.includes('wifi')? ['green-text']:null" fas icon="wifi" size="3x"
+              class="pr-3" aria-hidden="true"></mdb-icon>
+            <br>
+            <span>WIFI</span>
+          </div>
+          <div class="col-sm-2 text-center" *ngIf="room.amenities">
+            <mdb-icon [class]="room.amenities.includes('wheelchair')? ['green-text']:null" fas icon="wheelchair" size="3x"
+              aria-hidden="true"></mdb-icon>
+            <br>
+            <span class="displayinline">Disabled</span>
+          </div>
+          <div class="text-center" *ngIf="room.amenities">
+            <mdb-icon [class]="room.amenities.includes('microphone')? ['green-text']:null" fas icon="microphone" size="3x"
+              aria-hidden="true"></mdb-icon>
+            <br>
+            <span class="displayinline">Microphone</span>
+          </div>
+          <div class="col-sm-2 text-center" *ngIf="room.amenities">
+            <mdb-icon [class]="room.amenities.includes('life-ring')? ['green-text']:null" fas icon="life-ring" size="3x"
+              aria-hidden="true"></mdb-icon>
+            <br>
+            <span>Support</span>
+          </div>
+          <div class=" text-center" *ngIf="room.amenities">
+            <mdb-icon [class]="room.amenities.includes('microphone')? ['green-text']:null" fas icon="microphone" size="3x"
+              class="pr-3" aria-hidden="true"></mdb-icon>
+            <br>
+            <span class="displayinline pr-2">Presenter</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="margin: 10px;" *ngIf="myEvent && myEvent.filenames && myEvent.filnames?.length!=0">
+    <div class="col-sm-12">
+      <div class="card mt-4">
+        <div class="card-body">
+          <h4 class="card-title">Attachements</h4>
+        </div>
+        <div class="row" style="padding:11px">
+          <div class="col-sm-2 text-center" *ngFor="let item of myEvent.filenames">
+            <img src="{{pptimage}}" style="cursor: pointer;" (click)="DownloadFirebase(item)" class="mb-1" width="80px">
+            <br>
+            <span style="font-weight: 500;">{{item}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<br>
+<br>
+<br>
+<!--Main Layout-->
+
+<app-chat #chat [users]="users"></app-chat>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Propose a new date</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Date of meeting</label>
+        <div class="input-group">
+          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn" (click)="dp.toggle()" type="button" style="margin-top: -6px;">
+              <i class="fas fa-calendar"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
+
+<hr>
+

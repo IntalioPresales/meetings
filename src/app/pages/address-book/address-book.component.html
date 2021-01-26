@@ -1,0 +1,279 @@
+<loading *ngIf="isLoading"></loading>
+<header class="h-100">
+  <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg  intro-fixed-nav navbar-dark teal darken-2"
+    [containerInside]="false">
+    <mdb-navbar-brand>
+      <a class="logo navbar-brand " href="#">
+        <strong>Meeting Management</strong>
+      </a>
+    </mdb-navbar-brand>
+    <links>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item  waves-light" mdbWavesEffect [routerLink]="'/home'">
+          <a class="nav-link" mdbTooltip="Home" placement="bottom">
+            <mdb-icon fas icon="home"></mdb-icon>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/calendar'">
+          <a class="nav-link" mdbTooltip="Calendar" placement="bottom">
+            <mdb-icon fas icon="calendar-alt"></mdb-icon>
+          </a>
+        </li>
+        <li class="nav-item active waves-light" mdbWavesEffect [routerLink]="'/address'">
+          <a class="nav-link" mdbTooltip="Address Book" placement="bottom">
+            <mdb-icon fas icon="address-book"></mdb-icon>
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/in-room-app'">
+          <a class="nav-link" mdbTooltip="In Room App" placement="bottom">
+            <mdb-icon fas icon="tablet-alt"></mdb-icon>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/secretary-dashboard'">
+          <a class="nav-link" mdbTooltip="dashboard" placement="bottom">
+            <mdb-icon fas icon="chart-pie"></mdb-icon>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/minutes-meeting'">
+          <a class="nav-link" mdbTooltip="Minutes Meeting" placement="bottom">
+            <mdb-icon fas icon="calendar-check"></mdb-icon>
+          </a>
+        </li>
+        <!-- Dropdown -->
+        <!-- <li class="nav-item dropdown" dropdown>
+          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+            <mdb-icon fas icon="tablet-alt"></mdb-icon><span class="caret"></span>
+            <span class="sr-only">(current)</span>
+          </a>
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="'/in-room-app'">
+              <mdb-icon fas icon="sign-in-alt"></mdb-icon> In Room Tablet
+            </a>
+            <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="'/on-door-app'">
+              <mdb-icon fas icon="door-closed"></mdb-icon> On Door Tablet
+            </a>
+          </div>
+        </li> -->
+      </ul>
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <!-- Dropdown -->
+        <li class="nav-item dropdown" dropdown>
+          <a dropdownToggle class="nav-link p-0" href="#">
+            <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" class="rounded-circle z-depth-0"
+              alt="avatar image" height="35" mdbWavesEffect>
+          </a>
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-default" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Account</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Access Backend</a>
+            <div class="divider dropdown-divider"></div>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </links>
+  </mdb-navbar>
+  <!-- Main -->
+  <!-- <div class="view intro-2"
+    style='background: url("https://www.appliedglobal.com/wp-content/uploads/modern-conference-room.jpg")no-repeat center center; background-size: cover; height: 40vh; margin-top: 7.5vh;'>
+    <div class="full-bg-img">
+      <div class="mask rgba-stylish-strong flex-center">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <span style="color: white" class="h1 text-uppercase"><strong>{{myEvent.title}}</strong></span> <br />
+                  <span *ngIf="myEvent.meta" style="color: seashell" class="h4">{{myEvent.meta.roomNumber.name}}</span>
+                </div>
+                <div class="d-flex flex-row-reverse">
+                  <span mdbBtn type="button" color="danger" rounded="true" mdbWavesEffect class="rounded-button"
+                    (click)="deleteEvent()">
+                    <mdb-icon fas icon="trash"></mdb-icon>
+                  </span>
+                  <span mdbBtn type="button" color="info" rounded="true" mdbWavesEffect class="rounded-button">
+                    <mdb-icon fas icon="pencil-alt"></mdb-icon>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <!-- /.Main -->
+</header>
+<!--Main Navigation-->
+
+<!--Main Layout-->
+<!-- <main class="container">
+  <div class="row" style="margin: 10px">
+  </div>
+</main> -->
+<div class="card" style="margin-top: 4%;">
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">{{users.length}} Users</h3>
+  <div class="card-body">
+    <div id="table" class="table-editable">
+      <div class="d-flex flex-row">
+        <div class="w-100">
+          <div class="md-form">
+            <input type="text" [(ngModel)]="searchText" class="form-control" id="search" mdbInput>
+            <label for="search">Search</label>
+          </div>
+        </div>
+        <div class="flex-shrink-1">
+          <span class="table-add float-right mb-3 mr-2 align-middle">
+            <a class="text-success" (click)="openAddUserModel()">
+              <mdb-icon fas icon="plus" size="2x"></mdb-icon>
+            </a>
+          </span>
+        </div>
+      </div>
+      <table mdbTable class="table table-bordered table-responsive-md table-striped text-center">
+        <tr>
+          <th class="text-center">ID</th>
+          <th class="text-center">Profile</th>
+          <th class="text-center">Full Name</th>
+          <th class="text-center">Username</th>
+          <th class="text-center">Email Address</th>
+          <th class="text-center">Date of Birth</th>
+          <th class="text-center">Gender</th>
+          <th class="text-center">Remove</th>
+        </tr>
+        <tr *ngFor="let user of users; let id = index">
+          <td class="align-middle">
+            <span (keyup)="changeValue(id, 'id', $event)" (blur)="updateList(id, 'id', $event)"
+              contenteditable="false">{{user.id}}</span>
+          </td>
+          <!-- <td>
+            <span contenteditable="true" (keyup)="changeValue(id, 'image', $event)"
+              (blur)="updateList(id, 'image', $event)">{{user.image}}</span>
+          </td> -->
+          <td class="align-middle">
+            <img (click)="openImage(user.image)" *ngIf="user" [src]="user.image" class="rounded mx-auto d-block"
+              style="max-width: 50px; cursor: pointer;" alt="{{user.name}}">
+          </td>
+          <td class="align-middle">
+            <span (keyup)="changeValue(id, 'name', $event)" (blur)="updateList(id, 'name', $event)"
+              contenteditable="true">{{user.name}}</span>
+          </td>
+          <td class="align-middle">
+            <span contenteditable="true" (keyup)="changeValue(id, 'username', $event)"
+              (blur)="updateList(id, 'username', $event)">{{user.username}}</span>
+          </td>
+          <td class="align-middle">
+            <span contenteditable="true" (keyup)="changeValue(id, 'email_address', $event)"
+              (blur)="updateList(id, 'email_address', $event)">{{user.email_address}}</span>
+          </td>
+          <td class="align-middle">
+            <span contenteditable="false" (keyup)="changeValue(id, 'dob', $event)"
+              (blur)="updateList(id, 'dob', $event)">{{user.dob | amDateFormat:'LL'}}</span>
+          </td>
+          <td class="align-middle">
+            <span contenteditable="false" (keyup)="changeValue(id, 'gender', $event)"
+              (blur)="updateList(id, 'gender', $event)">{{user.gender}}</span>
+          </td>
+          <td class="align-middle">
+            <span class="table-remove">
+              <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0"
+                (click)="remove(id)">Remove</button>
+            </span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<br>
+
+<div mdbModal #imageModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content"
+      style="background-color: #fff0;     box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0), 0 0 0px 0 rgba(0, 0, 0, 0);">
+      <div class="modal-body">
+        <img style="max-width: 80%;" *ngIf="selectedImage" [src]="selectedImage" class="rounded mx-auto d-block" alt="img">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <button type="button" mdbBtn color="default" rounded="true" data-toggle="modal" data-target="#basicExample"
+  (click)="addUserModal.show()" mdbWavesEffect>Launch Modal</button> -->
+
+<div style="overflow-y: auto" mdbModal #addUserModal="mdbModal" class="modal fade right" id="frameModalTop"
+  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Add New User</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="addUserModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body mx-3">
+        <img *ngIf="imageOfUserToAdd" [src]="imageOfUserToAdd" class="rounded mx-auto d-block" alt="img">
+        <div class="md-form ">
+          <mdb-icon fas icon="user-alt"></mdb-icon>
+          <input #fullNameInput type="text" id="form34" class="form-control validate" mdbInput mdbValidate
+            [formControl]="contactFormModalName">
+          <label data-error="wrong" data-success="right" for="form34">Full Name</label>
+          <mdb-error *ngIf="fullNameInput.invalid && (fullNameInput.dirty || fullNameInput.touched)">Input invalid
+          </mdb-error>
+          <mdb-success *ngIf="fullNameInput.valid && (fullNameInput.dirty || fullNameInput.touched)">Input valid
+          </mdb-success>
+        </div>
+
+        <div class="md-form ">
+          <mdb-icon fas icon="id-card"></mdb-icon>
+          <input #usernameInput type="text" id="form35" class="form-control validate" mdbInput mdbValidate
+            [formControl]="contactFormModalUsername">
+          <label data-error="wrong" data-success="right" for="form35">Username</label>
+          <mdb-error *ngIf="usernameInput.invalid && (usernameInput.dirty || usernameInput.touched)">Input invalid
+          </mdb-error>
+          <mdb-success *ngIf="usernameInput.valid && (usernameInput.dirty || usernameInput.touched)">Input valid
+          </mdb-success>
+        </div>
+
+        <div class="md-form ">
+          <mdb-icon *ngIf="selectedGender==='Male'" fas icon="male"></mdb-icon>
+          <mdb-icon *ngIf="selectedGender==='Female'" fas icon="female"></mdb-icon>
+          <select (change)="onGenderChange($event.target.value)" class="browser-default custom-select mb-4 form-control"
+            style="margin-left: 38px; width: 400px;">
+            <!-- <option  disabled>Choose gender</option> -->
+            <option selected>Male</option>
+            <option>Female</option>
+          </select>
+        </div>
+
+        <div class="md-form ">
+          <mdb-icon fas icon="envelope"></mdb-icon>
+          <input #emailInput type="email" id="form29" class="form-control validate" mdbInput mdbValidate
+            [formControl]="contactFormModalEmail">
+          <label data-error="wrong" data-success="right" for="form29">Email Address</label>
+          <mdb-error *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)">Input invalid</mdb-error>
+          <mdb-success *ngIf="emailInput.valid && (emailInput.dirty || emailInput.touched)">Input valid</mdb-success>
+        </div>
+
+        <div class="md-form ">
+          <p class="text-center"><strong>Date of Birth</strong><span *ngIf="dateOfBirth" class="text-center">:
+              {{dateOfBirth | amDateFormat:'LL'}}</span></p>
+          <dl-date-time-picker startDate="1991" startView="year" maxView="year" minView="day" minuteStep="15"
+            [(ngModel)]="dateOfBirth">
+          </dl-date-time-picker>
+
+        </div>
+
+        <div class="modal-footer d-flex justify-content-center">
+          <button (click)="add()" mdbBtn color="success" class="waves-light" mdbWavesEffect>Save
+            <i class="far fa-save ml-1"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Main Layout-->

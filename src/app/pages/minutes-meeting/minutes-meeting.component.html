@@ -1,0 +1,115 @@
+<header class="h-100">
+  <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg  intro-fixed-nav navbar-dark teal darken-2"
+    [containerInside]="false">
+    <mdb-navbar-brand>
+      <a class="logo navbar-brand " href="#">
+        <strong>Meeting Management</strong>
+      </a>
+    </mdb-navbar-brand>
+    <links>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item  waves-light" mdbWavesEffect [routerLink]="'/home'">
+          <a class="nav-link" mdbTooltip="Home" placement="bottom">
+            <mdb-icon fas icon="home"></mdb-icon>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/calendar'">
+          <a class="nav-link" mdbTooltip="Calendar" placement="bottom">
+            <mdb-icon fas icon="calendar-alt"></mdb-icon>
+          </a>
+        </li>
+        <li class="nav-item active waves-light" mdbWavesEffect [routerLink]="'/address'">
+          <a class="nav-link" mdbTooltip="Address Book" placement="bottom">
+            <mdb-icon fas icon="address-book"></mdb-icon>
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/in-room-app'">
+          <a class="nav-link" mdbTooltip="In Room App" placement="bottom">
+            <mdb-icon fas icon="tablet-alt"></mdb-icon>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/secretary-dashboard'">
+          <a class="nav-link" mdbTooltip="dashboard" placement="bottom">
+            <mdb-icon fas icon="chart-pie"></mdb-icon>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/minutes-meeting'">
+          <a class="nav-link" mdbTooltip="Minutes Meeting" placement="bottom">
+            <mdb-icon fas icon="calendar-check"></mdb-icon>
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <!-- Dropdown -->
+        <li class="nav-item dropdown" dropdown>
+          <a dropdownToggle class="nav-link p-0" href="#">
+            <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" class="rounded-circle z-depth-0"
+              alt="avatar image" height="35" mdbWavesEffect>
+          </a>
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-default" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Account</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Access Backend</a>
+            <div class="divider dropdown-divider"></div>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </links>
+  </mdb-navbar>
+</header>
+<!--Main Navigation-->
+
+<!--Main Layout-->
+<!-- <main class="container">
+  <div class="row" style="margin: 10px">
+  </div>
+</main> -->
+<div class="card" style="margin-top: 4%;">
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">{{users.length}} Meeting<span [hidden]="users.length == 1">s</span></h3>
+  <div class="card-body">
+    <div id="table" class="table-editable">
+      <div class="d-flex flex-row">
+        <div class="w-100">
+          <div class="md-form">
+            <input type="text" [(ngModel)]="searchText" class="form-control" id="search" mdbInput>
+            <label for="search">Search</label>
+          </div>
+        </div>
+      </div>
+      <table mdbTable class="table table-bordered table-responsive-md table-striped text-center">
+        <tr>
+          <th class="text-center">Event</th>
+          <th class="text-center">Starts</th>
+          <th class="text-center">Ends</th>
+          <th class="text-center">Room</th>
+          <th class="text-center"></th>
+        </tr>
+        <tr *ngFor="let user of users; let id = index">
+          <td class="align-middle">
+            {{user.title}}
+          </td>
+
+          <td class="align-middle">
+            {{user.start | date:'medium'}}
+          </td>
+          <td class="align-middle">
+            {{user.end | date:'medium'}}
+          </td>
+          <td class="align-middle">
+            {{user?.meta?.roomNumber?.name }}
+          </td>
+          <td class="align-middle action">
+            <div [routerLink]="['/minutes-meeting-details', user.title]">
+              <mdb-icon fas icon="database"></mdb-icon>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<br>

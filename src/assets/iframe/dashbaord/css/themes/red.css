@@ -1,0 +1,37 @@
+
+/*theamable*/
+.page-content, .sidebar, .sidebar-header, .menu , .menu.accordion-menu ul li a:hover, .menu.accordion-menu ul li.active a, .menu_info-box .info-box:hover, .menu_info-box .info-box .info-box-icon,
+.clendar_events li .cal_event_info, .cal-ev-desc li span {
+    background: #9e1717;
+}
+
+.sidebar-profile span small, .menu.accordion-menu a, .menu.accordion-menu ul li a {
+    color: #FBAEAE;
+}
+
+.menu.accordion-menu > li > a:hover,.menu.accordion-menu > li.active > a, .menu.accordion-menu > li.active.open > a, .small-sidebar:not(.page-sidebar-fixed) .accordion-menu li.droplink:hover > a, .horizontal-bar .accordion-menu > li.droplink:hover > a,.menu.accordion-menu ul,.menu.accordion-menu li.open > a,.hover-menu .accordion-menu > li.droplink:hover > a,
+.menu_info-box .info-box, .cd-nav-hdr > li > a, .menu_info-box .info-box:hover .info-box-icon, .clendar_events li .cal_event_info.cal_event_info2, .cal-ev-desc li span.event2, .fc-event 
+{
+	background:#6D0606;
+}
+.fc-event{border-color:#9e1717}
+
+/* ************************************** */
+.sec-cd-nav .cd-nav li a, .cd-nav li a:hover{background: #FFF5F5;}
+.cd-nav, .sec-cd-nav .cd-nav li a:hover{ background:#f2f2f2}
+.cd-nav-hdr > li > a { border-right: solid 1px #fff;}
+.clendar_events li .cal-event-t{background:#d9d9d9;}
+.navbar .logo-box {
+    background: #fff;
+}
+.navbar .logo-box a {
+    color: #5f5f5f;
+}
+.menu_info-box .col-lg-15{border-color:#fff}
+.menu.accordion-menu > li > a:hover,.menu.accordion-menu > li.active > a, .menu.accordion-menu > li.active.open > a,.small-sidebar:not(.page-sidebar-fixed) .accordion-menu li.droplink:hover > a,.horizontal-bar .accordion-menu > li.droplink:hover > a,.menu.accordion-menu ul,.menu.accordion-menu li.open > a,.hover-menu .accordion-menu > li.droplink:hover > a,
+.menu.accordion-menu ul li a:hover, .menu.accordion-menu ul li.active a, .cd-nav-hdr > li > a ,.menu_info-box .info-box .info-box-stats span.info-box-title, .menu_info-box .info-box .info-box-icon p, .menu_info-box .info-box .info-box-stats i, .clendar_events li .cal_event_info
+ {
+    color: #fff;
+}
+/* End Theamable */
+/* ************************************** */

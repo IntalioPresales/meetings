@@ -1,0 +1,61 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+@import '~open-iconic/font/css/open-iconic-bootstrap.css';
+@import '~ngx-bar-rating/themes/br-default-theme.css';
+// @import '~bootstrap/dist/css/bootstrap.min.css';
+
+.navbar.scrolling-navbar.top-nav-collapse {
+  background: rgb(0, 174, 141);
+}
+
+.swal2-modal .swal2-styled+.swal2-styled {
+  margin-top: 0px;
+}
+
+.no-shadow {
+  box-shadow: 0 2px 0px 0 rgba(255, 36, 36, 0), 0 2px 0px 0 rgba(0, 0, 0, 0);
+
+  .card {
+    box-shadow: 0 2px 0px 0 rgba(255, 36, 36, 0), 0 2px 0px 0 rgba(0, 0, 0, 0);
+  }
+}
+
+@media screen and (min-width: 400px) and (max-width: 800px) {
+  .my-device {
+    height: 506px;
+    left: 16%;
+    top: 10%;
+  }
+}
+
+@media screen and (min-width: 800px) and (max-width: 1900px) {
+  .my-device {
+    height: 506px;
+    left: 25%;
+    top: 50%;
+  }
+}
+
+app-calendar-page {
+  .filepond--root {
+    margin: 0 !important;
+    border-radius: 0;
+  }
+}
+
+app-single-event .br {
+  margin: 0!important;
+ }
+
+ app-dashboard{
+  background-color: #EBEEEF;
+    display: flow-root;
+}
+app-dashboard-member{
+  background-color: #EBEEEF;
+    display: flow-root;
+}
+
+.dropdown-list {
+  z-index: 999!important;
+}

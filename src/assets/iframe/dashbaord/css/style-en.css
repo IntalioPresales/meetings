@@ -1,0 +1,345 @@
+@import url('/Assests/StyleLibrary/CSS/style-ar.css');
+
+html{direction:ltr;text-align:left;}
+
+ul {padding-right: inherit; padding-left:0;}
+
+
+.btn-link2{   
+    margin-left:15px;
+    margin-right: inherit;
+}
+.dropdown-menu {
+    right: 0 !important;
+    left: auto;
+    float: left;
+}
+.Talign {text-align:right;}
+
+.dropdown-menu {
+   text-align: left;
+}
+
+.navbar-default .navbar-nav>li:last-child a{
+    border-left: inherit;
+    border-right: none;
+}
+   
+
+.user-img{margin:0px 5px 0px 0px;  }
+.user-img h3 {
+    left: inherit;
+    right:0;
+}
+.nav-tabs>li>a:hover{  border-left-color: transparent;  border-right-color: transparent;  border-top-color: transparent;}
+.nav-tabs>li.active>a span,
+.nav-tabs>li.active>a:focus span, 
+.nav-tabs>li.active>a:hover span{
+ 
+  border-right: none;
+}
+
+.nav-tabs>li>a span{
+    border-left:inherit;
+    border-right:1px solid #7c8893;
+    padding-right: 20px;
+    padding-left:15px;
+}
+.nav-tabs>li:last-child>a>span {border-right:none;}
+.second-menu .link img {
+ 
+    margin-right: 8px;
+}
+ 
+.nav-tabs>li {
+    float: left;
+}
+
+.owl-dot {
+    margin-left: 5px;
+    margin-right: inherit;
+}
+.owl-rtl {
+        direction: ltr !important;
+    text-align: left !important;
+}
+.pull-left{float:right !important;}
+.owl-carousel.owl-rtl .owl-item {
+    float: left!important;
+}
+.navbar-default .navbar-nav>li>a{
+    border-right: 1px solid #7c8893;
+    border-left:inherit;
+
+}
+.navbar-toggle{    float: left;}
+.navbar-brand{float:right}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px){
+    .col-sm-1, .col-sm-10, .col-sm-11, 
+    .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4,
+    .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-13 {float: left;}
+	.navbar-nav , .navbar-nav>li {float: left;}
+
+  
+
+    
+}
+
+@media (max-width: 768px){
+  .caret{ float:left;}
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px){
+    .col-md-1, .col-md-10, .col-md-11, .col-md-12, 
+    .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, 
+    .col-md-7, .col-md-8, .col-md-9, .col-md-13 {float: left;}
+}
+@media (min-width:768px) and (max-width: 1002px) {
+    .navbar-default .navbar-nav > li > a {
+        
+        border-right: none;
+    }
+
+    .caret {
+        float: right;
+    }
+      .ctrls-menu .navbar-nav>li{ float:left}
+}
+@media (min-width: 1002px) {
+    .navbar-header {
+        float: right;
+    }
+}
+
+.checkbox label, .radio label {
+    padding-left: 20px;
+        padding-right: 0px;
+}
+
+.checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
+        margin-right: 0;
+    margin-left: -20px;
+}
+
+
+div[onclick] {
+  cursor: pointer;
+}
+
+.second-menu .link {
+    text-align: center;
+}
+
+.progress-bar {
+    float: left;
+}
+
+.nav-pills > li {
+    float: left;
+}
+
+#rootwizard .nav-pills li:after {
+    left: auto;
+       right: -16px;
+  
+    border-right: none;
+        border-left: 17px solid #2a3d50;
+
+
+}
+
+
+#rootwizard .nav-pills li:before {
+    right: auto;
+     left: 0;
+    border-right: none;
+    border-left: 17px solid #fff;
+
+}
+
+#rootwizard .nav-pills li:hover:after, #rootwizard .nav-pills li.active:after {
+    border-right-color: transparent;
+        border-left-color: #27bca7;
+}
+
+.grey-header {
+   
+    text-align: right;
+   
+}
+
+
+.input-group-addon:last-child {
+    border-left: 0;
+    border-right: 1px solid #ccc;
+}
+
+.ruBrowse{float:right !important}
+
+.bottom-button {
+    text-align: right;
+ 
+}
+
+.pull-right {
+    float: left !important;
+}
+
+.pull-left {
+    float: right!important;
+}
+
+
+.heading-gray {
+    border-left: 4px solid #27bca7 !important;
+    border-right: 1px solid #E8E8E7 !important;
+    border: 1px solid #E8E8E7;
+}
+
+
+.pager.wizard .next {
+    float: right;
+}
+
+.pager.wizard .previous {
+    float: left;
+}
+
+ .bottom-button{ text-align:right}
+
+
+
+ .C-checkbox-radio > li input[type=checkbox], .C-checkbox-radio > li input[type=radio]{
+
+    margin-right: -20px;
+    margin-left: 0px;
+}
+
+
+.C-checkbox-radio > li label, .C-checkbox-radio > li label {
+     padding-left: 20px;
+    padding-right: 0px;
+
+}
+
+.owl-prev, .owl-next  {
+
+    margin-top: -8px;
+
+}
+
+
+
+
+.RadUpload .ruInputs li {
+    text-align: left;
+}
+
+
+
+.ruAdd {
+
+    margin-left: 0 !important;
+    margin-right: 12px !important;
+}
+
+
+.mainmenu .dropdown-menu {
+
+    right: auto;
+    left: 0;
+}
+
+
+.mainmenu .dropdown-menu li a{text-align:left}
+
+.ctrls-menu .dropdown-menu:after {
+
+    right: 12px;
+    left: auto
+}
+
+
+.TL-values-1 {
+    left: 0%;
+}
+
+.TL-values-2 {
+    left: 25%;
+}
+
+.TL-values-3 {
+    left: 50%;
+}
+
+.TL-values-4 {
+    left: 75%;
+}
+
+.TL-values-5 {
+    left: 100%;
+}
+
+
+.sub-menu-item {
+    border-left: none;
+        /*border-right: 1px solid rgba(255, 255, 255, 0.53);*/
+
+}
+
+
+.sub-menu .col-md-13:last-child .sub-menu-item {
+
+   border-right: none;
+}
+
+.close {
+    float: right;
+  
+}
+/*Added by fhindash*/
+.C-checkbox-radio-columns > li{
+        padding-left: 10px;
+}
+/*ended fhindash*/
+.level-3 {
+    padding-left: 15px;
+    margin-left: 5px;
+    border-left: 1px solid #DDD;
+        padding-right: 0px;
+    margin-right: 0px;
+    border-right: none;
+   
+}
+
+
+.sub-menu-item {
+    border-left: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.53);
+    text-align: left;
+}
+
+
+.steps-cont .step:before {
+    border-right: 0px solid rgba(255, 255, 255, 0);
+    border-left: 20px solid rgba(255, 255, 255, 0.15);
+    right: -20px;
+    left: auto;
+}
+
+
+.steps-cont .step:after {
+    border-right: 0px solid rgba(255, 255, 255, 0);
+    border-left: 20px solid rgb(66, 84, 103);
+    left: 0;
+    right: auto;
+}
+
+.steps-cont .step b {
+    right: 7px;
+
+    left: auto;
+}

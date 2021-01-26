@@ -1,0 +1,322 @@
+<header class="h-100">
+  <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark intro-fixed-nav teal darken-2"
+    [containerInside]="false">
+    <mdb-navbar-brand>
+      <a class="logo navbar-brand" href="#">
+        <strong>Meeting Management</strong>
+      </a>
+    </mdb-navbar-brand>
+    <links>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active waves-light" mdbWavesEffect [routerLink]="'/home'">
+          <a class="nav-link" mdbTooltip="Home" placement="bottom">
+            <mdb-icon fas icon="home"></mdb-icon>
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/calendar'">
+          <a class="nav-link" mdbTooltip="Calendar" placement="bottom">
+            <mdb-icon fas icon="calendar-alt"></mdb-icon>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/address'">
+          <a class="nav-link" mdbTooltip="Address Book" placement="bottom">
+            <mdb-icon fas icon="address-book"></mdb-icon>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/in-room-app'">
+          <a class="nav-link" mdbTooltip="In Room App" placement="bottom">
+            <mdb-icon fas icon="tablet-alt"></mdb-icon>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/dashboard'">
+          <a class="nav-link" mdbTooltip="Dashboard" placement="bottom">
+            <mdb-icon fas icon="chart-bar"></mdb-icon>
+          </a>
+        </li>
+        <!-- Dropdown -->
+        <!-- <li class="nav-item dropdown" dropdown>
+          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+            <mdb-icon fas icon="tablet-alt"></mdb-icon><span class="caret"></span>
+            <span class="sr-only">(current)</span>
+          </a>
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="'/in-room-app'">
+              <mdb-icon fas icon="sign-in-alt"></mdb-icon> In Room Tablet
+            </a>
+            <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="'/on-door-app'">
+              <mdb-icon fas icon="door-closed"></mdb-icon> On Door Tablet
+            </a>
+          </div>
+        </li> -->
+      </ul>
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <!-- Dropdown -->
+        <li class="nav-item dropdown" dropdown>
+
+          <a dropdownToggle class="nav-link p-0" href="#">
+            <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" class="rounded-circle z-depth-0"
+              alt="avatar image" height="35" mdbWavesEffect>
+          </a>
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Account</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Access Backend</a>
+            <div class="divider dropdown-divider"></div>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </links>
+  </mdb-navbar>
+
+
+  <!-- /.Main -->
+</header>
+<!--Main Layout-->
+<div class="row" style="margin-top: 80px;margin-left: 10px;margin-right: 10px;">
+  <div class="col-lg-3 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-5 col-md-4">
+            <div class="icon-big text-center icon-warning">
+              <i class="nc-icon nc-globe text-warning"></i>
+            </div>
+          </div>
+          <div class="col-7 col-md-8">
+            <div class="numbers">
+              <p class="card-category">Meetings</p>
+              <p class="card-title">20
+              <p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-refresh"></i> Update Now
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-5 col-md-4">
+            <div class="icon-big text-center icon-warning">
+              <i class="nc-icon nc-money-coins text-success"></i>
+            </div>
+          </div>
+          <div class="col-7 col-md-8">
+            <div class="numbers">
+              <p class="card-category">Councils</p>
+              <p class="card-title">5
+              <p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-calendar-o"></i> Last day
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-5 col-md-4">
+            <div class="icon-big text-center icon-warning">
+              <i class="nc-icon nc-vector text-danger"></i>
+            </div>
+          </div>
+          <div class="col-7 col-md-8">
+            <div class="numbers">
+              <p class="card-category">Topics</p>
+              <p class="card-title">36
+              <p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-clock-o"></i> In the last hour
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-5 col-md-4">
+            <div class="icon-big text-center icon-warning">
+              <i class="nc-icon nc-favourite-28 text-primary"></i>
+            </div>
+          </div>
+          <div class="col-7 col-md-8">
+            <div class="numbers">
+              <p class="card-category">Decisions</p>
+              <p class="card-title">2
+              <p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-refresh"></i> Update now
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="row" style="margin: 10px 10px">
+
+    <div class="col-md-6">
+      <div class="card card-chart">
+        <div class="card-header">
+          <h5 class="card-title">
+            Meetings dates
+          </h5>
+          <!-- <p class="card-category">Line Chart with Points</p> -->
+        </div>
+        <div class="card-body">
+          <div class="row text-center">
+            <div class="col-md-4">
+              <div class="btn-group">
+                <div class="btn btn-default" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"
+                  (viewDateChange)="closeOpenMonthViewDay()">
+                  Previous
+                </div>
+                <div class="btn btn-outline-default" mwlCalendarToday [(viewDate)]="viewDate">
+                  Today
+                </div>
+                <div class="btn btn-default" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
+                  (viewDateChange)="closeOpenMonthViewDay()">
+                  Next
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+            </div>
+          </div>
+          <br />
+          <div [ngSwitch]="view">
+            <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events"
+              [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)"
+              (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)">
+            </mwl-calendar-month-view>
+            <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events"
+              [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)"
+              (eventTimesChanged)="eventTimesChanged($event)">
+            </mwl-calendar-week-view>
+            <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="events"
+              [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)"
+              (eventTimesChanged)="eventTimesChanged($event)">
+            </mwl-calendar-day-view>
+          </div>
+
+        </div>
+        <!-- <div class="card-footer">
+          <div class="chart-legend">
+            <i class="fa fa-circle text-info"></i> Tesla Model S
+            <i class="fa fa-circle text-warning"></i> BMW 5 Series
+          </div>
+          <hr/>
+          <div class="card-stats">
+            <i class="fa fa-check"></i> Data information certified
+          </div>
+        </div> -->
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card card-chart">
+        <div class="card-header">
+          <!-- <h5 class="card-title">
+
+          </h5> -->
+          <p class="card-category">Meetings details</p>
+        </div>
+        <div class="card-body">
+          <div class="card__main">
+            <div class="card__row">
+              <div class="card__icon"><i class="fas fa-building"></i></div>
+              <div class="card__time">
+                <div>today</div>
+              </div>
+              <div class="card__detail">
+                <div class="card__source text-bold">The Jewel room</div>
+                <div class="card__description">Discuss the recommendation of the Finance Committee</div>
+                <div class="card__note">04/12/2020</div>
+              </div>
+            </div>
+            <div class="card__row">
+              <div class="card__icon"><i class="fas fa-building"></i></div>
+              <div class="card__time">
+                <div>Tuesday</div>
+              </div>
+              <div class="card__detail">
+                <div class="card__source text-bold">The Jewel room</div>
+                <div class="card__description">Discuss the recommendation of the Finance Committee</div>
+                <div class="card__note">04/12/2020</div>
+              </div>
+            </div>
+            <div class="card__row">
+              <div class="card__icon"><i class="fas fa-building"></i></div>
+              <div class="card__time">
+                <div>Thursday</div>
+              </div>
+              <div class="card__detail">
+                <div class="card__source text-bold">The Jewel room</div>
+                <div class="card__description">Discuss the recommendation of the Finance Committee</div>
+                <div class="card__note">04/12/2020</div>
+              </div>
+            </div>
+            <div class="card__row">
+              <div class="card__icon"><i class="fas fa-building"></i></div>
+              <div class="card__time">
+                <div>Friday</div>
+              </div>
+              <div class="card__detail">
+                <div class="card__source text-bold">The Jewel room</div>
+                <div class="card__description">Discuss the recommendation of the Finance Committee</div>
+                <div class="card__note">04/12/2020</div>
+              </div>
+            </div>
+            <div class="card__row">
+              <div class="card__icon"><i class="fas fa-building"></i></div>
+              <div class="card__time">
+                <div>Saturday</div>
+              </div>
+              <div class="card__detail">
+                <div class="card__source text-bold">The Jewel room</div>
+                <div class="card__description">Discuss the recommendation of the Finance Committee</div>
+                <div class="card__note">04/12/2020</div>
+              </div>
+            </div>
+        </div>
+        <div class="card-footer">
+          <div class="chart-legend">
+            <i class="fa fa-circle text-info"></i>Councils dates
+            <i class="fa fa-circle text-danger" style="color: #E74C3C !important;"></i>Meeting dates
+          </div>
+          <hr/>
+          <div class="card-stats">
+            <i class="fa fa-check"></i> Data information certified
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>

@@ -1,0 +1,26 @@
+<div class="pan-header">{{topic.topic}}</div>
+<textarea class="form-control" placeholder="Note" rows="3"></textarea>
+<!-- <div class="btns" fxLayout="row" fxLayoutAlign="space-between start">
+  <div class="e-btn ">
+    <mdb-icon class="mr-1" fas icon="user-tag"></mdb-icon>
+    To-do
+  </div>
+  <div class="e-btn">
+    <mdb-icon class="mr-1" fas icon="check"></mdb-icon>
+    Resolve
+  </div>
+</div> -->
+<div fxLayout="row">
+  <div class="owner-label">Owner:</div>
+  <div class="owner-name">{{topic.user[0].name}}</div>
+</div>
+
+<div class="mt-2" fxLayout="row" fxLayoutAlign="start center">
+  <div class="owner-label mt-0">Voting: </div>
+  <div class="mr-3 vote-up" fxLayout="row" fxLayoutAlign="start center" [ngClass]="a==undefined ? 'vote-grey' :'vote-up'">
+    <mdb-icon class="mr-1" fas icon="check" (click)="voteup()"></mdb-icon> {{ topic?.votes_up?.length || 0 }}
+  </div>
+  <div class="vote-down" fxLayout="row" fxLayoutAlign="start center" style="padding-top: 2px;" [ngClass]="b==undefined ? 'vote-grey' :'vote-down'">
+    <mdb-icon class="mr-1" fas icon="times" (click)="votedown()"></mdb-icon> {{ topic?.votes_down?.length || 0 }}
+  </div>
+</div>

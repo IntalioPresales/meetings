@@ -1,0 +1,35 @@
+<div class="pan-header">{{topic.topic}}</div>
+<textarea class="form-control" placeholder="Note" rows="3"></textarea>
+<div class="btns" fxLayout="row" fxLayoutAlign="space-between start">
+  <div class="e-btn ">
+    <mdb-icon class="mr-1" fas icon="user-tag"></mdb-icon>
+    To-do
+  </div>
+  <div class="e-btn">
+    <mdb-icon class="mr-1" fas icon="check"></mdb-icon>
+    Resolve
+  </div>
+</div>
+<div fxLayout="row">
+  <div class="owner-label">Owner:</div>
+  <div class="owner-name">{{topic.user[0].name}}</div>
+</div>
+
+<div class="mt-2" fxLayout="row" fxLayoutAlign="start start">
+  <div class="owner-label mt-0">Voting: </div>
+  <div class="mr-3 vote-up" fxLayout="row" fxLayoutAlign="start center">
+    <mdb-icon style="margin-right: 3px; font-size: 14px;" class="" fas icon="check"></mdb-icon>
+    <div>{{ topic?.votes_up?.length || 0 }}</div>
+  </div>
+  <div class="vote-down" fxLayout="row" fxLayoutAlign="start center" style="padding-top: 2px;">
+    <mdb-icon class="" fas icon="times"></mdb-icon>
+    <div>{{ topic?.votes_down?.length || 0 }}</div>
+  </div>
+
+  <div style="margin-left: auto; font-size: 20px;  color: #686868;">
+    <mdb-icon class="icon-file" style="cursor: pointer;" fas icon="file-alt" (click)="onOpenDocument()"></mdb-icon>
+  </div>
+</div>
+
+<!-- <a href="https://teams.microsoft.com/dl/launcher/launcher.html?url=%2F_%23%2Fl%2Fmeetup-join%2F19%3Ameeting_ZDZjNzE2ZDAtZDQwNy00MjAxLWFkZTYtOTgxY2Q1YzgxNzQw%40thread.v2%2F0%3Fcontext%3D%257b%2522Tid%2522%253a%25228fd45bf7-d0fe-4746-9a74-39d1123b4e2e%2522%252c%2522Oid%2522%253a%25226a0de00b-364d-48b6-b571-9fbb3afd2b92%2522%257d%26anon%3Dtrue&type=meetup-join&deeplinkId=f73b9a81-a3dc-4a6f-a2fa-c2114f4d9315&directDl=true&msLaunch=true&enableMobilePage=true&suppressPrompt=true"
+  target="blank" class="owner-label mt-0">Click here to join the call </a> -->

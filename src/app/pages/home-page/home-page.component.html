@@ -1,0 +1,227 @@
+<header class="h-100">
+  <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark intro-fixed-nav teal darken-2"
+    [containerInside]="false">
+    <mdb-navbar-brand>
+      <a class="logo navbar-brand" href="#">
+        <strong>Meeting Management</strong>
+      </a>
+    </mdb-navbar-brand>
+    <links>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active waves-light" mdbWavesEffect [routerLink]="'/home'">
+          <a class="nav-link" mdbTooltip="Home" placement="bottom">
+            <mdb-icon fas icon="home"></mdb-icon>
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/calendar'">
+          <a class="nav-link" mdbTooltip="Calendar" placement="bottom">
+            <mdb-icon fas icon="calendar-alt"></mdb-icon>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/address'">
+          <a class="nav-link" mdbTooltip="Address Book" placement="bottom">
+            <mdb-icon fas icon="address-book"></mdb-icon>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/in-room-app'">
+          <a class="nav-link" mdbTooltip="In Room App" placement="bottom">
+            <mdb-icon fas icon="tablet-alt"></mdb-icon>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/secretary-dashboard'">
+          <a class="nav-link" mdbTooltip="dashboard" placement="bottom">
+            <mdb-icon fas icon="chart-pie"></mdb-icon>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/minutes-meeting'">
+          <a class="nav-link" mdbTooltip="Minutes Meeting" placement="bottom">
+            <mdb-icon fas icon="calendar-check"></mdb-icon>
+          </a>
+        </li>
+        <!-- Dropdown -->
+        <!-- <li class="nav-item dropdown" dropdown>
+          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+            <mdb-icon fas icon="tablet-alt"></mdb-icon><span class="caret"></span>
+            <span class="sr-only">(current)</span>
+          </a>
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="'/in-room-app'">
+              <mdb-icon fas icon="sign-in-alt"></mdb-icon> In Room Tablet
+            </a>
+            <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="'/on-door-app'">
+              <mdb-icon fas icon="door-closed"></mdb-icon> On Door Tablet
+            </a>
+          </div>
+        </li> -->
+      </ul>
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <!-- Dropdown -->
+        <li class="nav-item dropdown" dropdown>
+
+          <a dropdownToggle class="nav-link p-0" href="#">
+            <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" class="rounded-circle z-depth-0"
+              alt="avatar image" height="35" mdbWavesEffect>
+          </a>
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Account</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Access Backend</a>
+            <div class="divider dropdown-divider"></div>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </links>
+  </mdb-navbar>
+  <!-- Main -->
+  <div class="view intro-2"
+    style='background: url("https://www.appliedglobal.com/wp-content/uploads/modern-conference-room.jpg")no-repeat center center; background-size: cover;'
+    [ngStyle]="innerWidth<1400 ?{'height': '135vh'} : {'height': '115vh'}">
+    <div class="full-bg-img">
+      <div class="mask flex-center" [ngStyle]="{ 'background-image': 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.7) 100%), url(' + backgroundimage + ')'}">
+        <!-- <div class="container text-center white-text wow fadeInUp">
+            <h2>Welcome to Meeting Managements</h2>
+            <br>
+            <h5>Here will be the main screen</h5>
+          </div> -->
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4 text-center" style="margin-bottom: 30px;">
+              <mdb-card>
+                <mdb-card-body style="height: 271px; margin-bottom: -45px;">
+                  <mdb-card-title>
+                    <h4><strong>Meetings / Month</strong></h4>
+                  </mdb-card-title>
+                  <h1 style="margin-top: 60px; font-size: 80px;">56</h1>
+                </mdb-card-body>
+              </mdb-card>
+            </div>
+            <div class="col-sm-4 text-center">
+              <mdb-card>
+                <mdb-card-body style="height: 271px; margin-bottom: -45px;">
+                  <mdb-card-title>
+                    <h4><strong>Daily Expected Meetings</strong></h4>
+                  </mdb-card-title>
+                  <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel"
+                    [options]="options" [name]="name" [bottomLabel]="bottomLabel"></rg-gauge-chart>
+                </mdb-card-body>
+              </mdb-card>
+            </div>
+            <div class="col-sm-4 text-center">
+              <mdb-card style="">
+                <mdb-card-body style="height: 271px; margin-bottom: -45px;">
+                  <mdb-card-title>
+                    <h4><strong>Requests</strong></h4>
+                  </mdb-card-title>
+                  <div style="display: block ">
+                    <canvas baseChart style="height: 900px;" [data]="doughnutChartData" [labels]="doughnutChartLabels"
+                      [chartType]="doughnutChartType">
+                    </canvas>
+                  </div>
+                </mdb-card-body>
+              </mdb-card>
+            </div>
+            <div class="col-sm-4 text-center">
+              <!-- Card -->
+              <mdb-card>
+                <!--Card content-->
+                <mdb-card-body>
+                  <!--Title-->
+                  <mdb-card-title>
+                    <h4 class="text-success"><strong>Available Rooms</strong></h4>
+                  </mdb-card-title>
+                  <!--Text-->
+                  <mdb-card-text>
+                    <ng-container *ngFor="let room of available_rooms; let i=index">
+                      <a *ngIf="i<12" href="#" mdbBtn color="success" mdbWavesEffect [routerLink]="'/on-door-app/'+room.number">{{room.name}}</a>
+                    </ng-container>
+                  </mdb-card-text>
+                </mdb-card-body>
+              </mdb-card>
+              <!-- Card -->
+            </div>
+            <div class="col-sm-4 text-center">
+              <!-- Card -->
+              <mdb-card>
+                <!--Card content-->
+                <mdb-card-body>
+                  <!--Title-->
+                  <mdb-card-title>
+                    <h4 class="text-danger "><strong>Occupied Rooms</strong></h4>
+                  </mdb-card-title>
+                  <!--Text-->
+                  <mdb-card-text>
+                    <ng-container *ngFor="let room of not_available_rooms; let i=index">
+                      <a *ngIf="i<12" href="#" mdbBtn color="danger" mdbWavesEffect [routerLink]="'/on-door-app/'+room.number">{{room.name}}</a>
+                    </ng-container>
+                  </mdb-card-text>
+                </mdb-card-body>
+              </mdb-card>
+              <!-- Card -->
+            </div>
+            <div class="col-sm-4 text-center">
+              <!-- Card -->
+              <mdb-card>
+                <!--Card content-->
+                <mdb-card-body>
+                  <!--Title-->
+                  <mdb-card-title>
+                    <h4 class="text-warning"><strong>Requires Cleaning</strong></h4>
+                  </mdb-card-title>
+                  <!--Text-->
+                  <mdb-card-text>
+                    <ng-container *ngFor="let room of requires_cleaning_rooms; let i=index">
+                      <a *ngIf="!room.available && i<12" href="#" mdbBtn color="warning" outline="true"
+                        mdbWavesEffect [routerLink]="'/on-door-app/'+room.number"><span class="text-danger"><strong>{{room.name}}</strong></span></a>
+                      <a *ngIf="room.available && i<12" href="#" mdbBtn color="warning" outline="true"
+                        mdbWavesEffect [routerLink]="'/on-door-app/'+room.number"><span class="text-success"><strong>{{room.name}}</strong></span></a>
+                    </ng-container>
+                  </mdb-card-text>
+                </mdb-card-body>
+              </mdb-card>
+              <!-- Card -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.Main -->
+</header>
+<!--Main Navigation-->
+
+<!--Main Layout-->
+<main class="container">
+  <div class="row" style="margin: 10px">
+    <div class="col-sm-12">
+      <table datatable class="row-border hover" [dtTrigger]="dtTrigger">
+        <thead>
+          <tr>
+            <th>Number</th>
+            <th>Available</th>
+            <th>Requires Cleaning</th>
+            <th>Size</th>
+            <th>Amenities</th>
+            <!-- <th>Action</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let room of filteredMyRooms">
+            <td style="cursor: pointer" [routerLink]="'/on-door-app/'+room.number">{{room.number}}</td>
+            <td [style.color]="room.available ? 'green' : 'red'">{{room.available? 'Yes':'No'}}</td>
+            <td [style.color]="room.needs_cleaning ? 'red' : 'green'">{{room.needs_cleaning? 'Yes':'No'}}</td>
+            <td>{{room.size}} Seats</td>
+            <td>
+              <mdb-icon (click)="resetTableFilter()" fas icon="sync"
+                style="margin: 3px; margin-right: 20px; cursor: pointer;"></mdb-icon>
+              <mdb-icon *ngFor="let icon of room.amenities" (click)="filterTable(icon)" fas icon="{{icon}}"
+                style="margin: 3px; cursor: pointer;"></mdb-icon>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
+<!--Main Layout-->
+<loading *ngIf="isLoading"></loading>

@@ -1,0 +1,477 @@
+<header class="h-100">
+  <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg  intro-fixed-nav navbar-dark teal darken-2"
+    [containerInside]="false">
+    <mdb-navbar-brand>
+      <a class="logo navbar-brand " href="#">
+        <strong>Meeting Management</strong>
+      </a>
+    </mdb-navbar-brand>
+    <links>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item  waves-light" mdbWavesEffect [routerLink]="'/home'">
+          <a class="nav-link" mdbTooltip="Home" placement="bottom">
+            <mdb-icon fas icon="home"></mdb-icon>
+          </a>
+        </li>
+        <li class="nav-item active waves-light" mdbWavesEffect [routerLink]="'/calendar'">
+          <a class="nav-link" mdbTooltip="Calendar" placement="bottom">
+            <mdb-icon fas icon="calendar-alt"></mdb-icon>
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/address'">
+          <a class="nav-link" mdbTooltip="Address Book" placement="bottom">
+            <mdb-icon fas icon="address-book"></mdb-icon>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/in-room-app'">
+          <a class="nav-link" mdbTooltip="In Room App" placement="bottom">
+            <mdb-icon fas icon="tablet-alt"></mdb-icon>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/secretary-dashboard'">
+          <a class="nav-link" mdbTooltip="dashboard" placement="bottom">
+            <mdb-icon fas icon="chart-pie"></mdb-icon>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect [routerLink]="'/minutes-meeting'">
+          <a class="nav-link" mdbTooltip="Minutes Meeting" placement="bottom">
+            <mdb-icon fas icon="calendar-check"></mdb-icon>
+          </a>
+        </li>
+        <!-- Dropdown -->
+        <!-- <li class="nav-item dropdown" dropdown>
+          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+            <mdb-icon fas icon="tablet-alt"></mdb-icon><span class="caret"></span>
+            <span class="sr-only">(current)</span>
+          </a>
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="'/in-room-app'">
+              <mdb-icon fas icon="sign-in-alt"></mdb-icon> In Room Tablet
+            </a>
+            <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="'/on-door-app'">
+              <mdb-icon fas icon="door-closed"></mdb-icon> On Door Tablet
+            </a>
+          </div>
+        </li> -->
+      </ul>
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <!-- Dropdown -->
+        <li class="nav-item dropdown" dropdown>
+
+          <a dropdownToggle class="nav-link p-0" href="#">
+            <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" class="rounded-circle z-depth-0"
+              alt="avatar image" height="35" mdbWavesEffect>
+          </a>
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-default" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Account</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Access Backend</a>
+            <div class="divider dropdown-divider"></div>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </links>
+  </mdb-navbar>
+</header>
+<!--Main Navigation-->
+
+<!--Main Layout-->
+<main class="container" style="margin-top: 80px;">
+  <div class="row" style="margin: 10px">
+    <div class="col-sm-12">
+      <div class="row text-center">
+        <div class="col-sm-12">
+          <div style="width: 340px;">
+            <ng-multiselect-dropdown [placeholder]="'Filter'" [data]="dropdownList_Filter"
+              [(ngModel)]="filter" [settings]="dropdownSettings_filter"
+              (onSelectAll)="onFilterChange($event)"
+              (onDeSelectAll)="onFilterChange($event)"
+              (onSelect)="onFilterChange($event)"
+              (onDeSelect)="onFilterChange($event)">
+            </ng-multiselect-dropdown>
+          </div>
+
+          <!-- <h3> -->
+          <button class="btn btn-default pull-right" (click)="newEventModal.show()" mdbWavesEffect>
+            <span style="color: white;">
+              <mdb-icon fas icon="plus"></mdb-icon>
+            </span>
+          </button>
+          <div class="clearfix"></div>
+          <!-- </h3> -->
+        </div>
+        <div class="col-md-4">
+          <div class="btn-group">
+            <div class="btn btn-default" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"
+              (viewDateChange)="closeOpenMonthViewDay()">
+              Previous
+            </div>
+            <div class="btn btn-outline-default" mwlCalendarToday [(viewDate)]="viewDate">
+              Today
+            </div>
+            <div class="btn btn-default" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
+              (viewDateChange)="closeOpenMonthViewDay()">
+              Next
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <h4 class="mt-2">{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h4>
+        </div>
+        <div class="col-md-4">
+          <div class="btn-group">
+            <div class="btn btn-default" (click)="setView(CalendarView.Month)"
+              [class.active]="view === CalendarView.Month">
+              Month
+            </div>
+            <div class="btn btn-default" (click)="setView(CalendarView.Week)"
+              [class.active]="view === CalendarView.Week">
+              Week
+            </div>
+            <div class="btn btn-default" (click)="setView(CalendarView.Day)" [class.active]="view === CalendarView.Day">
+              Day
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div [ngSwitch]="view">
+        <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events"
+          [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)"
+          (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)">
+        </mwl-calendar-month-view>
+        <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events"
+          [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)"
+          (eventTimesChanged)="eventTimesChanged($event)">
+        </mwl-calendar-week-view>
+        <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="events"
+          [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)"
+          (eventTimesChanged)="eventTimesChanged($event)">
+        </mwl-calendar-day-view>
+      </div>
+
+      <!-- <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>default color</th>
+                    <th>Secondary color</th>
+                    <th>Starts at</th>
+                    <th>Ends at</th>
+                    <th>Remove</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr *ngFor="let event of events">
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="event.title"
+                        (keyup)="refresh.next()"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="color"
+                        [(ngModel)]="event.color.default"
+                        (change)="refresh.next()"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="color"
+                        [(ngModel)]="event.color.secondary"
+                        (change)="refresh.next()"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        class="form-control"
+                        type="text"
+                        mwlFlatpickr
+                        [(ngModel)]="event.start"
+                        (ngModelChange)="refresh.next()"
+                        [altInput]="true"
+                        [convertModelValue]="true"
+                        [enableTime]="true"
+                        dateFormat="Y-m-dTH:i"
+                        altFormat="F j, Y H:i"
+                        placeholder="Not set"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        class="form-control"
+                        type="text"
+                        mwlFlatpickr
+                        [(ngModel)]="event.end"
+                        (ngModelChange)="refresh.next()"
+                        [altInput]="true"
+                        [convertModelValue]="true"
+                        [enableTime]="true"
+                        dateFormat="Y-m-dTH:i"
+                        altFormat="F j, Y H:i"
+                        placeholder="Not set"
+                      />
+                    </td>
+                    <td>
+                      <button class="btn btn-danger" (click)="deleteEvent(event)">
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div> -->
+
+      <ng-template #modalContent let-close="close">
+        <div class="modal-header">
+          <h5 class="modal-title">Event action occurred</h5>
+          <button type="button" class="close" (click)="close()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div>
+            Action:
+            <pre>{{ modalData?.action }}</pre>
+          </div>
+          <div>
+            Event:
+            <pre>{{ modalData?.event | json }}</pre>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" (click)="close()">
+            OK
+          </button>
+        </div>
+      </ng-template>
+
+      <div style="overflow-y: auto" mdbModal #newEventModal="mdbModal" class="modal fade bottom" tabindex="-1"
+        role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close pull-right" aria-label="Close" (click)="newEventModal.hide()">
+                <span aria-hidden="true">×</span>
+              </button>
+              <h4 class="modal-title w-100" id="myModalLabel">Add Event</h4>
+            </div>
+            <div class="modal-body">
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div>
+                      <div class="md-form">
+                        <i class="fas fa-users prefix"></i>
+                        <input [(ngModel)]="eventName" (ngModelChange)="saveevent($event)" mdbInput type="text" id="form2" class="form-control">
+                        <label for="form2">Meeting Name</label>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <ng-multiselect-dropdown [placeholder]="'Committee Type'" [data]="dropdownList_Types"
+                        [(ngModel)]="selectedItems_Types" [settings]="dropdownSettings_Types"
+                        (onSelect)="onItemSelectType($event)" (onSelectAll)="onSelectAllType($event)">
+                      </ng-multiselect-dropdown>
+                    </div>
+                    <div class="mb-3">
+                      <ng-multiselect-dropdown [placeholder]="'Users'" [data]="dropdownList_Users"
+                        [(ngModel)]="selectedItems_Users" [settings]="dropdownSettings_Users"
+                        (onSelect)="onItemSelectUser($event)" (onSelectAll)="onSelectAllUser($event)">
+                      </ng-multiselect-dropdown>
+                    </div>
+                    <div>
+                      <ng-multiselect-dropdown [placeholder]="'Available Rooms'" [data]="dropdownList_Rooms"
+                        [(ngModel)]="selectedItems_Rooms" [settings]="dropdownSettings_Rooms">
+                      </ng-multiselect-dropdown>
+                    </div>
+
+                    <div class="custom-control custom-checkbox mt-3">
+                      <input type="checkbox" class="custom-control-input" [(ngModel)]="recurrent" id="customCheck" name="example1">
+                      <label class="custom-control-label" for="customCheck">Recurrent</label>
+                    </div>
+                    <div [hidden]="!recurrent">
+                      <div class="form-group mt-3">
+                        <label for="exampleFormControlSelect1">Repeat frequency</label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                          <option>Daily</option>
+                          <option>Weekly</option>
+                          <option>Monthly</option>
+                          <option>Annually</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div style="margin-top: 30px;">
+                      <strong class="weight">Starts On</strong>
+                      <dl-date-time-picker startView="day" maxView="year" minView="minute" minuteStep="15"
+                        [(ngModel)]="startingDate">
+                      </dl-date-time-picker>
+                    </div>
+
+                    <div>
+                      <strong class="weight">Ends On</strong>
+                      <dl-date-time-picker startView="day" maxView="year" minView="minute" minuteStep="15"
+                        [(ngModel)]="endingDate">
+                      </dl-date-time-picker>
+                    </div>
+                    <div>
+                      <strong class="weight">Attachments</strong>
+                      <file-pond #myPond
+                        [options]="pondOptions"
+                        [files]="pondFiles"
+                        (oninit)="pondHandleInit()"
+                        (onaddfile)="pondHandleAddFile($event)">
+                      </file-pond>
+                    </div>
+
+                    <div class="mt-4">
+                      <div fxLayout="row" fxLayoutAlign="space-between center">
+                        <strong class="weight">Agenda</strong>
+                        <div class="new-topic" (click)="newTopic()">
+                          <mdb-icon fas icon="plus"></mdb-icon> New Topic
+                        </div>
+                      </div>
+                      <table class="table table-bordered">
+                        <thead>
+                          <th>Topic</th>
+                          <th>Duration</th>
+                          <th>Owner</th>
+                          <th>Voting</th>
+                          <th>Attachments</th>
+                          <th class="action-col"></th>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of topics;  index as i">
+                            <td style="min-width: 300px;max-width: 300px;">
+                              <input class="form-control" placeholder="Topic" [(ngModel)]="topics[i].topic">
+                            </td>
+                            <td style="min-width: 120px;max-width: 120px;">
+                              <div class="input-group">
+                                <input class="form-control" placeholder="Duration" [(ngModel)]="topics[i].duration">
+                                <div class="input-group-prepend">
+                                  <div class="input-group-text">min</div>
+                                </div>
+                              </div>
+                            </td>
+                            <td style="min-width: 250px;max-width: 250px;">
+                              <ng-multiselect-dropdown style="min-width: 300px;" [placeholder]="'Users'" [data]="dropdownList_Users"
+                                [(ngModel)]="topics[i].user" [settings]="dropdownSettings_Users_Single"
+                                (onSelect)="onItemSelectUser($event)">
+                              </ng-multiselect-dropdown>
+                            </td>
+                            <td>
+                              <div class="custom-control custom-checkbox vote_enabled">
+                                <input type="checkbox" class="custom-control-input" [(ngModel)]="topics[i].votes_enabled" [id]="'voteCheck'+i" name="example1">
+                                <label class="custom-control-label" [for]="'voteCheck'+i"></label>
+                              </div>
+                            </td>
+                            <td class="topic-file-td">
+                              <file-pond
+                                [options]="pondOptions_topics"
+                                [files]="pondFile_topics"
+                                (oninit)="pondHandleInit()"
+                                (onaddfile)="pondHandleAddFile($event)">
+                              </file-pond>
+                            </td>
+                            <td class="action action-col">
+                              <mdb-icon (click)="removeTopic(i)" style="cursor: pointer;" fas icon="trash-alt"></mdb-icon>
+                            </td>
+                          </tr>
+                          <tr [hidden]="topics.length">
+                            <td class="no-topics" colspan="6" (click)="newTopic()">Press here to add a new topic</td>
+                          </tr>
+                        </tbody>
+
+                      </table>
+                      <!-- <ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table> -->
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" mdbBtn color="danger" class="waves-light" aria-label="Close"
+                (click)="newEventModal.hide()" mdbWavesEffect>Close</button>
+              <button type="button" mdbBtn color="success" class="relative waves-light" mdbWavesEffect
+                (click)="addEvent()">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <ng-template #addNewModal let-close="close" style="overflow-y: auto">
+        <div class="modal-header">
+          <h5 class="modal-title">Add an event</h5>
+          <button type="button" class="close" (click)="close()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6">
+                <div>
+                  <div class="md-form">
+                    <i class="fas fa-bookmark prefix"></i>
+                    <input mdbInput type="text" id="form2" class="form-control">
+                    <label for="form2">Event Name</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div style="margin-top: 30px;">
+                  <ng-multiselect-dropdown [placeholder]="'Users'" [data]="dropdownList" [(ngModel)]="selectedItems"
+                    [settings]="dropdownSettings" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+                  </ng-multiselect-dropdown>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div>
+                  Starts On
+                  <dl-date-time-picker startView="day" maxView="year" minView="minute" minuteStep="15"
+                    [(ngModel)]="startingDate">
+                  </dl-date-time-picker>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div>
+                  Ends On
+                  <dl-date-time-picker startView="day" maxView="year" minView="minute" minuteStep="15"
+                    [(ngModel)]="endingDate">
+                  </dl-date-time-picker>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            Event:
+            <pre>{{ modalData?.event | json }}</pre>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" (click)="updatedDate()">
+            OK
+          </button>
+        </div>
+      </ng-template> -->
+    </div>
+  </div>
+</main>
+<br>
+<br>
+<br>
+<!--Main Layout-->
+<!-- add to document <head> -->
+
+
+<div id="overlay" class="overlay"></div>
+<div id="spanner" class="spanner">
+  <div class="loader"></div>
+  <p>Fetching events, please be patient.</p>
+</div>

@@ -1,0 +1,43 @@
+.completed {
+  color: #45cb64;
+}
+
+.fas {
+  cursor: pointer;
+}
+
+.active {
+  background-color: #00796b !important;
+}
+
+.active * {
+  color: #fff;
+}
+
+.box {
+  padding: 10px;
+  background: #fff;
+  margin: 3px 0;
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  place-content: center space-between;
+  align-items: center;
+  box-shadow: 0 1px 1px #c1c1c1;
+}
+
+.counter {
+  font-weight: 600;
+  font-size: 15px;
+  color: #464545;
+}
+
+.faded {
+  color: #a49e9e;
+}
+
+.topic-title {
+  text-transform: capitalize;
+  font-weight: 400;
+  font-size: 14px;
+}
